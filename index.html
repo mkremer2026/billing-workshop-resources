@@ -7,7 +7,7 @@
 <meta name="description" content="Your complete resource center for the Bill Your Time Today Billing Workshop. CLE compliance materials, attendee handouts, and workshop documentation from Molly Kremer, Esq.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #002147;
@@ -25,13 +25,11 @@
     --slate-light: #718096;
     --line: rgba(0, 33, 71, 0.12);
     --line-strong: rgba(0, 33, 71, 0.22);
-    --shadow-soft: 0 4px 20px rgba(0, 33, 71, 0.06);
     --shadow-card: 0 2px 8px rgba(0, 33, 71, 0.05);
-    --shadow-hover: 0 14px 40px rgba(0, 33, 71, 0.16);
+    --shadow-hover: 0 18px 50px rgba(0, 33, 71, 0.18);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -41,13 +39,16 @@
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 25% 20%, rgba(203, 161, 53, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 75% 80%, rgba(0, 33, 71, 0.018) 0%, transparent 40%);
   }
 
   /* === HERO === */
   .hero {
     background: var(--navy);
     color: var(--cream);
-    padding: 80px 40px 96px;
+    padding: 100px 40px 110px;
     position: relative;
     overflow: hidden;
   }
@@ -57,9 +58,29 @@
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-image:
-      radial-gradient(circle at 20% 30%, rgba(203, 161, 53, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(203, 161, 53, 0.06) 0%, transparent 50%);
+      radial-gradient(circle at 18% 28%, rgba(203, 161, 53, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 82% 72%, rgba(203, 161, 53, 0.07) 0%, transparent 50%);
     pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 32px; right: 32px;
+    width: 64px; height: 64px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-bracket-bl {
+    position: absolute;
+    bottom: 32px; left: 32px;
+    width: 64px; height: 64px;
+    border-bottom: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+    opacity: 0.5;
+    z-index: 1;
   }
 
   .hero-inner {
@@ -76,124 +97,181 @@
     color: var(--gold-bright);
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 36px;
   }
 
   .hero-eyebrow::before,
   .hero-eyebrow::after {
     content: '';
-    width: 32px;
+    width: 36px;
     height: 1px;
     background: var(--gold);
   }
 
   .hero h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 6vw, 84px);
+    font-size: clamp(52px, 7vw, 96px);
     font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
     color: var(--cream);
   }
 
   .hero h1 em {
     font-style: italic;
-    color: var(--gold-bright);
+    background: linear-gradient(120deg, var(--gold-soft) 0%, var(--gold-bright) 50%, var(--gold-pale) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 500;
   }
 
   .hero-tagline {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: clamp(20px, 2.4vw, 26px);
+    font-size: clamp(20px, 2.4vw, 28px);
     color: var(--gold-pale);
     font-weight: 400;
-    margin-bottom: 32px;
-    max-width: 680px;
-    line-height: 1.4;
+    margin-bottom: 56px;
+    max-width: 700px;
+    line-height: 1.45;
   }
 
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    color: rgba(250, 246, 238, 0.7);
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    padding-top: 24px;
-    border-top: 1px solid rgba(203, 161, 53, 0.25);
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(203, 161, 53, 0.3);
+    max-width: 720px;
   }
 
-  .hero-meta strong {
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 56px);
+    font-weight: 500;
     color: var(--gold-bright);
-    font-weight: 600;
-    margin-right: 6px;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-stat-num em { font-style: italic; }
+
+  .hero-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250, 246, 238, 0.7);
+    font-weight: 500;
+  }
+
+  /* === PULL QUOTE === */
+  .pull-quote {
+    padding: 110px 40px 100px;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .pull-quote::before,
+  .pull-quote::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 50px;
+    background: var(--gold);
+    opacity: 0.45;
+  }
+
+  .pull-quote::before { top: 30px; }
+  .pull-quote::after { bottom: 30px; }
+
+  .pull-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(36px, 6vw, 78px);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.1;
+    max-width: 1000px;
+    margin: 0 auto 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .pull-quote-text strong {
+    font-weight: 500;
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .pull-quote-attribution {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-top: 28px;
   }
 
   /* === INTRO === */
   .intro {
-    max-width: 820px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 90px 40px 60px;
+    padding: 60px 40px 40px;
     text-align: center;
   }
 
   .intro p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 2.2vw, 24px);
-    line-height: 1.55;
-    color: var(--navy);
-    font-weight: 400;
-  }
-
-  .intro p + p {
-    margin-top: 18px;
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--slate);
     font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--slate);
   }
 
-  .intro-divider {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 40px auto 0;
-    position: relative;
-  }
-
-  .intro-divider::before {
-    content: '✦';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--cream);
-    color: var(--gold);
-    padding: 0 12px;
-    font-size: 14px;
+  .intro p strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--navy);
+    font-size: 19px;
   }
 
   /* === SECTION === */
   .section {
-    max-width: 1180px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 60px 40px;
+    padding: 80px 40px;
   }
 
   .section-header {
-    margin-bottom: 50px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 30px;
-    flex-wrap: wrap;
+    margin-bottom: 64px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 40px;
+    align-items: end;
     border-bottom: 1px solid var(--line-strong);
-    padding-bottom: 20px;
+    padding-bottom: 32px;
   }
+
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(80px, 9vw, 132px);
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    opacity: 0.9;
+  }
+
+  .section-titles { padding-bottom: 14px; }
 
   .section-label {
     font-family: 'Inter', sans-serif;
@@ -202,29 +280,44 @@
     letter-spacing: 0.28em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
-  .section-header h2 {
+  .section-titles h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 46px);
+    font-size: clamp(32px, 4.2vw, 48px);
     font-weight: 500;
-    line-height: 1.15;
+    line-height: 1.1;
     color: var(--navy);
     letter-spacing: -0.005em;
   }
 
-  .section-header h2 em {
+  .section-titles h2 em {
     font-style: italic;
     color: var(--gold);
     font-weight: 500;
   }
 
   .section-meta {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--slate-light);
     text-align: right;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  .section-meta strong {
+    display: block;
+    color: var(--navy);
+    font-size: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 4px;
   }
 
   /* === RESOURCE GRID === */
@@ -237,78 +330,109 @@
   .resource-card {
     background: #fff;
     border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 32px 28px 28px;
+    padding: 36px 32px 30px;
     position: relative;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .resource-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .resource-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 100%;
+    top: 0; left: 0; right: 0;
     height: 3px;
     background: var(--gold);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
   }
 
   .resource-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
     border-color: var(--gold-soft);
   }
 
-  .resource-card:hover::before {
-    transform: scaleX(1);
-  }
+  .resource-card:hover::before { transform: scaleX(1); }
 
   .resource-card-top {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
   }
 
   .resource-icon {
-    width: 44px;
-    height: 44px;
-    border: 1.5px solid var(--gold);
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--gold);
     background: var(--cream);
-    color: var(--navy);
+    color: var(--gold);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: all 0.35s ease;
+  }
+
+  .resource-card:hover .resource-icon {
+    background: var(--gold);
+    color: #fff;
+    transform: rotate(-4deg);
+  }
+
+  .resource-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .resource-meta {
+    text-align: right;
+    padding-top: 4px;
+  }
+
+  .resource-number {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
     font-style: italic;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.01em;
   }
 
   .resource-tag {
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--slate-light);
-    padding-top: 14px;
+    margin-top: 6px;
   }
 
   .resource-card h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
     color: var(--navy);
-    line-height: 1.25;
-    margin-bottom: 14px;
+    line-height: 1.2;
+    margin-bottom: 16px;
     letter-spacing: -0.005em;
   }
 
@@ -316,45 +440,60 @@
     font-size: 14.5px;
     line-height: 1.65;
     color: var(--slate);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     flex-grow: 1;
   }
 
   .resource-download {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: var(--navy);
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 12px 18px;
+    padding: 14px 22px;
     border: 1px solid var(--navy);
     background: transparent;
     align-self: flex-start;
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
 
-  .resource-download:hover {
+  .resource-download::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
     background: var(--navy);
-    color: var(--gold-bright);
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
   }
+
+  .resource-download:hover::before { left: 0; }
+
+  .resource-download span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.25s ease;
+  }
+
+  .resource-download:hover span { color: var(--gold-bright); }
 
   .resource-download .arrow {
     display: inline-block;
-    transition: transform 0.25s ease;
+    transition: transform 0.3s ease;
   }
 
-  .resource-download:hover .arrow {
-    transform: translateX(4px);
-  }
+  .resource-download:hover .arrow { transform: translateX(5px); }
 
   /* === ASSISTANCE BAND === */
   .assistance {
     background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream-deep) 100%);
-    padding: 100px 40px 110px;
+    padding: 110px 40px 120px;
     margin-top: 80px;
     position: relative;
   }
@@ -376,8 +515,8 @@
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 80px;
+    grid-template-columns: 400px 1fr;
+    gap: 90px;
     align-items: center;
   }
 
@@ -385,7 +524,7 @@
     position: relative;
     aspect-ratio: 1 / 1.2;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 33, 71, 0.18);
+    box-shadow: 0 24px 70px rgba(0, 33, 71, 0.22);
   }
 
   .assistance-photo img {
@@ -395,37 +534,34 @@
     display: block;
   }
 
-  .assistance-photo::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border: 8px solid transparent;
-    background:
-      linear-gradient(var(--cream-warm), var(--cream-warm)) padding-box,
-      linear-gradient(135deg, var(--gold) 0%, var(--gold-pale) 50%, var(--gold) 100%) border-box;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    opacity: 0;
-  }
-
   .assistance-photo-frame {
     position: absolute;
-    inset: -14px;
+    inset: -16px;
     border: 1px solid var(--gold);
     pointer-events: none;
   }
 
-  .assistance-content .section-label {
-    margin-bottom: 18px;
+  .assistance-photo-ornament {
+    position: absolute;
+    bottom: -28px; right: -28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    pointer-events: none;
   }
+
+  .assistance-content .section-label { margin-bottom: 20px; }
 
   .assistance-content h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 4.4vw, 52px);
+    font-size: clamp(38px, 4.6vw, 56px);
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.08;
     color: var(--navy);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     letter-spacing: -0.01em;
   }
 
@@ -437,9 +573,9 @@
 
   .assistance-content p {
     font-size: 17px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--slate);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     max-width: 540px;
   }
 
@@ -452,7 +588,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
-    margin-top: 36px;
+    margin-top: 40px;
   }
 
   .btn-primary {
@@ -462,10 +598,10 @@
     background: var(--navy);
     color: var(--gold-bright);
     text-decoration: none;
-    padding: 18px 32px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    padding: 20px 36px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     border: 1px solid var(--navy);
     transition: all 0.3s ease;
@@ -474,8 +610,8 @@
   .btn-primary:hover {
     background: var(--navy-deep);
     color: var(--gold-pale);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 33, 71, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(0, 33, 71, 0.28);
   }
 
   .btn-secondary {
@@ -485,10 +621,10 @@
     background: transparent;
     color: var(--navy);
     text-decoration: none;
-    padding: 18px 32px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    padding: 20px 36px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     border: 1px solid var(--navy);
     transition: all 0.3s ease;
@@ -497,14 +633,14 @@
   .btn-secondary:hover {
     background: var(--navy);
     color: var(--gold-bright);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
   }
 
   /* === FOOTER === */
   footer {
     background: var(--navy);
     color: var(--cream);
-    padding: 70px 40px 50px;
+    padding: 90px 40px 60px;
     text-align: center;
     position: relative;
   }
@@ -520,30 +656,53 @@
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
 
-  .footer-mark {
+  .footer-monogram {
+    width: 100px;
+    height: 100px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .footer-monogram::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  .footer-monogram-letter {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 28px;
+    font-size: 56px;
     color: var(--gold-bright);
-    margin-bottom: 8px;
+    line-height: 1;
+    font-weight: 500;
   }
 
   .footer-name {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.18em;
+    font-size: 12px;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--cream);
-    margin-bottom: 30px;
+    margin-bottom: 36px;
+    opacity: 0.9;
   }
 
   .footer-slogan {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 22px;
+    font-size: 26px;
     color: var(--gold-bright);
-    margin-bottom: 36px;
-    padding: 22px 40px;
+    margin-bottom: 44px;
+    padding: 26px 50px;
     border-top: 1px solid rgba(203, 161, 53, 0.3);
     border-bottom: 1px solid rgba(203, 161, 53, 0.3);
     display: inline-block;
@@ -552,9 +711,9 @@
   .footer-links {
     display: flex;
     justify-content: center;
-    gap: 32px;
+    gap: 36px;
     flex-wrap: wrap;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
 
   .footer-links a {
@@ -581,240 +740,302 @@
   @media (max-width: 900px) {
     .assistance-inner {
       grid-template-columns: 1fr;
-      gap: 50px;
+      gap: 60px;
       max-width: 540px;
     }
-
     .assistance-photo {
-      max-width: 320px;
+      max-width: 340px;
       margin: 0 auto;
     }
-
     .section-header {
-      flex-direction: column;
-      align-items: flex-start;
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
-
     .section-meta {
       text-align: left;
+      padding-bottom: 0;
     }
+    .hero-stats { gap: 24px; }
   }
 
   @media (max-width: 600px) {
-    .hero { padding: 60px 24px 70px; }
-    .intro { padding: 60px 24px 40px; }
-    .section { padding: 40px 24px; }
-    .assistance { padding: 70px 24px 80px; }
-    footer { padding: 50px 24px 40px; }
+    .hero { padding: 70px 24px 80px; }
+    .pull-quote { padding: 80px 24px; }
+    .intro { padding: 50px 24px 30px; }
+    .section { padding: 60px 24px; }
+    .assistance { padding: 80px 24px 90px; }
+    footer { padding: 70px 24px 50px; }
     .resource-grid { grid-template-columns: 1fr; }
     .assistance-cta-row { flex-direction: column; }
     .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .hero-stats { grid-template-columns: 1fr; gap: 28px; }
+    .section-number { font-size: 80px; }
   }
 
-  /* === ANIMATIONS === */
   @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .hero-eyebrow,
   .hero h1,
   .hero-tagline,
-  .hero-meta {
-    animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  .hero-stats {
+    animation: fadeUp 0.85s cubic-bezier(0.4, 0, 0.2, 1) backwards;
   }
 
   .hero-eyebrow { animation-delay: 0.1s; }
-  .hero h1 { animation-delay: 0.2s; }
-  .hero-tagline { animation-delay: 0.35s; }
-  .hero-meta { animation-delay: 0.5s; }
+  .hero h1 { animation-delay: 0.25s; }
+  .hero-tagline { animation-delay: 0.4s; }
+  .hero-stats { animation-delay: 0.55s; }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
+  <div class="hero-bracket-bl"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">The Billing Coach · Workshop Vault</div>
     <h1>Bill Your Time Today<br><em>Resource Center</em></h1>
     <p class="hero-tagline">Everything your firm needs to host the workshop, secure CLE credit, and put the framework into practice the very next day.</p>
-    <div class="hero-meta">
-      <span><strong>1.0 Hour</strong> Ethics CLE</span>
-      <span><strong>10 Resources</strong> Curated &amp; Production-Ready</span>
-      <span><strong>50-State</strong> CLE Reference</span>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><em>1.0</em></div>
+        <div class="hero-stat-label">Hour Ethics CLE</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">10</div>
+        <div class="hero-stat-label">Curated Resources</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">50</div>
+        <div class="hero-stat-label">State CLE Reference</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- INTRO -->
-<section class="intro">
-  <p>A complete, production-ready set of materials for the <em>Bill Your Time Today &mdash; In a Stress-Free Way</em> billing workshop.</p>
-  <p>Inside, you&rsquo;ll find everything two distinct audiences need: the firm-side documentation your CLE coordinators will use to secure ethics credit and run the program cleanly, and the attendee-facing materials that turn the workshop content into something your timekeepers can implement immediately.</p>
-  <div class="intro-divider"></div>
+<section class="pull-quote">
+  <p class="pull-quote-text">Bill it like you <strong>mean it.</strong><br>It&rsquo;s time.</p>
+  <div class="pull-quote-attribution">— The Billing Coach</div>
 </section>
 
-<!-- SECTION 1: FIRM ADMIN RESOURCES -->
+<section class="intro">
+  <p>A complete, production-ready set of materials for the <strong>Bill Your Time Today &mdash; In a Stress-Free Way</strong> billing workshop. Inside, you&rsquo;ll find everything two distinct audiences need: the firm-side documentation your CLE coordinators will use to secure ethics credit and run the program cleanly, and the attendee-facing materials that turn the workshop content into something your timekeepers can implement immediately.</p>
+</section>
+
 <section class="section" id="firm-admin">
   <div class="section-header">
-    <div>
+    <div class="section-number">01</div>
+    <div class="section-titles">
       <div class="section-label">For Firm Administrators</div>
       <h2>CLE Compliance &amp; <em>Documentation</em></h2>
     </div>
-    <div class="section-meta">4 Resources · For CLE Coordinators &amp; Professional Development Teams</div>
+    <div class="section-meta">
+      <strong>3 Resources</strong>
+      For CLE Coordinators<br>&amp; Professional Development
+    </div>
   </div>
 
   <div class="resource-grid">
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">P</div>
-        <div class="resource-tag">Playbook</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><path d="M6 6 L6 26 L16 24 L26 26 L26 6 L16 8 Z"/><line x1="16" y1="8" x2="16" y2="24"/><line x1="10" y1="12" x2="13" y2="11.5"/><line x1="10" y1="16" x2="13" y2="15.5"/><line x1="19" y1="11.5" x2="22" y2="12"/><line x1="19" y1="15.5" x2="22" y2="16"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/01</div>
+          <div class="resource-tag">Playbook</div>
+        </div>
       </div>
       <h3>CLE Compliance Playbook</h3>
       <p>A phased, end-to-end playbook for firm CLE coordinators handling sponsor accreditation, attendee tracking, and post-workshop reporting. Designed to scale to any state roster and any timeline &mdash; six months out or six days out.</p>
       <a href="CLE-Compliance-Playbook.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">R</div>
-        <div class="resource-tag">Reference Guide</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><path d="M5 9 L12 6 L20 9 L27 6 L27 23 L20 26 L12 23 L5 26 Z"/><line x1="12" y1="6" x2="12" y2="23"/><line x1="20" y1="9" x2="20" y2="26"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/02</div>
+          <div class="resource-tag">Reference Guide</div>
+        </div>
       </div>
       <h3>CLE Credit Requirements by State</h3>
       <p>A 52-page state-by-state reference covering total CLE hours, ethics specialty requirements, reporting cycles, application fees, retroactive options, and contact information for every U.S. jurisdiction.</p>
       <a href="CLE-Credit-Requirements-50-States.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">C</div>
-        <div class="resource-tag">Template</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="13" r="7"/><path d="M11 18 L9 27 L13 25 L16 27 L19 25 L23 27 L21 18"/><circle cx="16" cy="13" r="3"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/03</div>
+          <div class="resource-tag">Template</div>
+        </div>
       </div>
       <h3>Certificate of Attendance Template</h3>
       <p>A professional, print-ready certificate template with provider information, credit hours, and credit-type fields. Ready to brand with your firm name and distribute to all attendees post-workshop.</p>
       <a href="Certificate-of-Attendance-Template.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
-      </a>
-    </article>
-
-    <article class="resource-card">
-      <div class="resource-card-top">
-        <div class="resource-icon">E</div>
-        <div class="resource-tag">Form</div>
-      </div>
-      <h3>Post-Workshop Evaluation</h3>
-      <p>A standardized feedback form for attendee responses on program content, learning objectives, and instructor effectiveness. Required by California; recommended in every jurisdiction. Administer via Google Form or paper.</p>
-      <a href="Post-Workshop-Evaluation.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
   </div>
 </section>
 
-<!-- SECTION 2: WORKSHOP DOCUMENTATION -->
 <section class="section" id="workshop-docs">
   <div class="section-header">
-    <div>
+    <div class="section-number">02</div>
+    <div class="section-titles">
       <div class="section-label">Workshop Documentation</div>
       <h2>Program Content &amp; <em>CLE Submission Materials</em></h2>
     </div>
-    <div class="section-meta">For State Bar Applications &amp; Promotional Use</div>
+    <div class="section-meta">
+      <strong>7 Resources</strong>
+      For State Bar Applications<br>&amp; Workshop Delivery
+    </div>
   </div>
 
   <div class="resource-grid">
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">D</div>
-        <div class="resource-tag">Description</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><path d="M9 5 L21 5 L25 9 L25 27 L9 27 Z"/><path d="M21 5 L21 9 L25 9"/><line x1="13" y1="14" x2="21" y2="14"/><line x1="13" y1="18" x2="21" y2="18"/><line x1="13" y1="22" x2="18" y2="22"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/04</div>
+          <div class="resource-tag">Description</div>
+        </div>
       </div>
       <h3>Webinar Description</h3>
       <p>The official program description with ABA Model Rule citations, target audience, and ethics content overview. For use in promotional materials and CLE applications &mdash; satisfies the course-description requirement in every MCLE jurisdiction.</p>
       <a href="Webinar-Description.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">A</div>
-        <div class="resource-tag">Agenda</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M16 9 L16 16 L21 19"/><line x1="16" y1="5" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="27"/><line x1="5" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="27" y2="16"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/05</div>
+          <div class="resource-tag">Agenda</div>
+        </div>
       </div>
       <h3>Timed Agenda</h3>
       <p>Minute-by-minute breakdown of the 60-minute workshop, identifying the 54 minutes of ethics content qualifying for 1.0 hour of ethics CLE credit. Required for state bar applications.</p>
       <a href="Timed-Agenda.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">B</div>
-        <div class="resource-tag">Bio</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="5"/><path d="M7 26 C7 21 11 18 16 18 C21 18 25 21 25 26"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/06</div>
+          <div class="resource-tag">Bio</div>
+        </div>
       </div>
       <h3>Speaker Bio</h3>
       <p>Professional biography of Molly Kremer, Esq. &mdash; 16+ years of BigLaw civil litigation experience, certified life coach, and creator of the ATVR Billing Narrative Framework. Required by most state bar applications.</p>
       <a href="Speaker-Bio-Molly-Kremer.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">L</div>
-        <div class="resource-tag">Objectives</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="7"/><circle cx="16" cy="16" r="3"/><line x1="16" y1="3" x2="16" y2="6"/><line x1="16" y1="26" x2="16" y2="29"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/07</div>
+          <div class="resource-tag">Objectives</div>
+        </div>
       </div>
       <h3>Learning Objectives</h3>
       <p>Four clearly stated educational objectives covering the 3 Core Billing Challenges, mindset shifts, the 4-Part Billing Framework, and contemporaneous timekeeping. Required by most MCLE boards as a separate submission.</p>
       <a href="Learning-Objectives.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">G</div>
-        <div class="resource-tag">Attendee Handbook</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><path d="M8 5 L24 5 L24 27 L8 27 Z"/><line x1="11" y1="5" x2="11" y2="27"/><line x1="14" y1="11" x2="21" y2="11"/><line x1="14" y1="16" x2="21" y2="16"/><line x1="14" y1="21" x2="19" y2="21"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/08</div>
+          <div class="resource-tag">Attendee Handbook</div>
+        </div>
       </div>
       <h3>Workshop Guide</h3>
       <p>The attendee handbook used during the workshop. Walks participants through the 4 Learning Lessons with structured space for note-taking and on-the-spot exercises. Distribute before the program begins.</p>
       <a href="Workshop-Guide.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
     <article class="resource-card">
       <div class="resource-card-top">
-        <div class="resource-icon">✦</div>
-        <div class="resource-tag">Written Materials</div>
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><rect x="6" y="7" width="6" height="20"/><rect x="13" y="11" width="6" height="16"/><rect x="20" y="5" width="6" height="22"/><line x1="9" y1="11" x2="9" y2="13"/><line x1="16" y1="15" x2="16" y2="17"/><line x1="23" y1="9" x2="23" y2="11"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/09</div>
+          <div class="resource-tag">Written Materials</div>
+        </div>
       </div>
       <h3>Resource &amp; Reference Guide</h3>
       <p>Comprehensive written materials with all ABA Model Rules cited, ABA Formal Opinions on billing, case law analysis, and state bar billing guidelines. Satisfies the &ldquo;stand-alone instructional tool&rdquo; requirement for California, New York, and Washington applications.</p>
       <a href="Resource-Reference-Guide.docx" class="resource-download" download>
-        Download <span class="arrow">→</span>
+        <span>Download <span class="arrow">&rarr;</span></span>
+      </a>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-card-top">
+        <div class="resource-icon">
+          <svg viewBox="0 0 32 32"><rect x="7" y="6" width="18" height="22"/><polyline points="10,12 12,14 15,11"/><line x1="17" y1="13" x2="22" y2="13"/><polyline points="10,18 12,20 15,17"/><line x1="17" y1="19" x2="22" y2="19"/><polyline points="10,24 12,26 15,23"/><line x1="17" y1="25" x2="22" y2="25"/></svg>
+        </div>
+        <div class="resource-meta">
+          <div class="resource-number">/10</div>
+          <div class="resource-tag">Form</div>
+        </div>
+      </div>
+      <h3>Post-Workshop Evaluation</h3>
+      <p>A standardized feedback form for attendee responses on program content, learning objectives, and instructor effectiveness. Required by California; recommended in every jurisdiction. Administer via Google Form or paper.</p>
+      <a href="Post-Workshop-Evaluation.docx" class="resource-download" download>
+        <span>Download <span class="arrow">&rarr;</span></span>
       </a>
     </article>
 
   </div>
 </section>
 
-<!-- ASSISTANCE -->
 <section class="assistance">
   <div class="assistance-inner">
     <div class="assistance-photo">
       <div class="assistance-photo-frame"></div>
       <img src="https://res.cloudinary.com/dan6pgimm/image/upload/v1777410004/Molly-23_onrt1p.jpg" alt="Molly Kremer, Esq. — The Billing Coach">
+      <div class="assistance-photo-ornament">&ldquo;</div>
     </div>
     <div class="assistance-content">
       <div class="section-label">Need a Hand?</div>
@@ -823,19 +1044,20 @@
       <p>Email me directly at <strong>info@thebillingcoach.com</strong>, or book a time on my calendar to talk through your firm&rsquo;s specifics live.</p>
       <div class="assistance-cta-row">
         <a href="https://thebillingcoach.com/thebillingcoachcalendar" class="btn-primary" target="_blank" rel="noopener">
-          Book A Call <span>→</span>
+          Book A Call <span>&rarr;</span>
         </a>
         <a href="mailto:info@thebillingcoach.com" class="btn-secondary">
-          Email Molly <span>→</span>
+          Email Molly <span>&rarr;</span>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-mark">M</div>
+  <div class="footer-monogram">
+    <div class="footer-monogram-letter">M</div>
+  </div>
   <div class="footer-name">Molly Kremer, Esq. · The Billing Coach</div>
   <div class="footer-slogan">Bill it like you mean it. It&rsquo;s time.</div>
   <div class="footer-links">
@@ -845,6 +1067,25 @@
   </div>
   <div class="footer-copyright">© 2026 Molly Kremer Coaching, LLC · All Rights Reserved</div>
 </footer>
+
+<script>
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('is-visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.resource-card').forEach(card => observer.observe(card));
+  } else {
+    document.querySelectorAll('.resource-card').forEach(card => card.classList.add('is-visible'));
+  }
+</script>
 
 </body>
 </html>
